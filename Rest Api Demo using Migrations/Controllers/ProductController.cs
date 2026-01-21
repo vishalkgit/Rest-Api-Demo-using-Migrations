@@ -110,12 +110,19 @@ namespace Rest_Api_Demo_using_Migrations.Controllers
         {
             var updatepartial = dbContext.Products.Find(Pid);
 
-            updatepartial.PName= updateProductDto.PName;
-            updatepartial.Cost= updateProductDto.Cost;
+            if(updatepartial is null)
+            {
+                return StatusCode(404);
+            }
 
+            if (updateProductDto.PName != null)
+                updatepartial.PName = updateProductDto.PName;
 
-            dbContext.Products.Update(updatepartial);
+            if (updateProductDto.Cost != null)
+                updatepartial.Cost = updateProductDto.Cost;
+
             dbContext.SaveChanges();
+            
             return Ok(updatepartial);
 
         }
