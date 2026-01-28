@@ -16,5 +16,7 @@ namespace Rest_Api_Demo_using_Migrations.Data
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Employee> Employees { get; set; }
+
     }
 }

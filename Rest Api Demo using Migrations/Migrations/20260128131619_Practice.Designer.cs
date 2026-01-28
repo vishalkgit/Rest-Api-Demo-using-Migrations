@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rest_Api_Demo_using_Migrations.Data;
 
@@ -11,9 +12,11 @@ using Rest_Api_Demo_using_Migrations.Data;
 namespace Rest_Api_Demo_using_Migrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260128131619_Practice")]
+    partial class Practice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,26 +48,6 @@ namespace Rest_Api_Demo_using_Migrations.Migrations
                     b.HasKey("Cid");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Rest_Api_Demo_using_Migrations.Models.Entitiess.Employee", b =>
-                {
-                    b.Property<int>("Eid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Eid"));
-
-                    b.Property<string>("EName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Eid");
-
-                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Rest_Api_Demo_using_Migrations.Models.Entitiess.Product", b =>
